@@ -1,0 +1,70 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+void userAnswers() 
+{
+	char ans;
+	cin >> ans;
+	//cin.fail
+	while (cin.fail())
+	{
+		cout << "Invalid command, enter Y or N: " << endl;
+		cin.clear();
+		cin.ignore(1000, '\n');
+		cin >> ans;
+	}
+	switch (ans) 
+	{
+	case 'Y':
+	case 'y':
+		cout << "Enjoy the trip!" << endl;
+		break;
+	case 'N':
+	case 'n':
+		cout << "Trip is cancelled" << endl;
+		break;
+	default:
+		cout << "Error" << endl;
+	}
+}
+
+
+void verify(int age) 
+{		
+	//If statements for activities
+	if ((age >= 16) && (age <= 21)) {
+		//Verify Activity
+		cout << "Do you want to go to the mall? (Y/N)" << endl;
+		userAnswers();
+	}
+	else if ((age >= 22) && (age <= 30)) {
+		//Verify Activity
+		cout << "Do you want to go to a trip to Hawaii? (Y/N)" << endl;
+		userAnswers();
+	}
+	else if (age < 16) {
+		cout << "You are too young to travel";
+	}
+	else if (age > 30) {
+		cout << "You are too old";
+	}
+}
+
+int main()
+{
+	//Data collecting
+	int age;
+	cout << "Enter your age:\n";
+	cin >> age;
+
+	//cin.fail
+	while (cin.fail())
+	{
+		cout << "Invalid command, enter the numbers again: " << endl;
+		cin.clear();
+		cin.ignore(1000, '\n');
+		cin >> age;
+	}
+	verify(age);
+}
